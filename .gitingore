@@ -1,0 +1,23 @@
+.env
+local_settings.py
+secrets.json
+
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+*.log
+local_settings.py
+.DS_Store (для macOS)
+Thumbs.db (для Windows)
+
+.idea/
+.vscode/
+*.swp
+*.bak
