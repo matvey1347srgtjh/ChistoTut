@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация — Чисто.Тут</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'dashboard:main' %}">Главная</a>
+            | <a href="{% url 'auth:login' %}">Вход</a>
+            | Регистрация
+        </nav>
+    </header>
+
+    <h1>Регистрация сотрудника</h1>
+    <p>Создание учётной записи приёмщика/администратора</p>
+
+    {% if form.errors %}
+    <ul>
+        {% for field in form %}
+            {% for error in field.errors %}
+                <li>{{ field.label }}: {{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form method="post" action="{% url 'auth:register' %}">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>{{ form.username.label_tag }}</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password1.label_tag }}</td>
+                <td>{{ form.password1 }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password2.label_tag }}</td>
+                <td>{{ form.password2 }}</td>
+            </tr>
+        </table>
+        <input type="submit" value="Зарегистрироваться">
+    </form>
+
+</body>
+</html>

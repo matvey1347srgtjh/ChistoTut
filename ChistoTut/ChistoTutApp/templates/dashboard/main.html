@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Главная — Чисто.Тут</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="{% url 'dashboard:main' %}">Главная</a>
+        |
+        <form action="{% url 'auth:logout' %}" method="post" style="display: inline">
+          {% csrf_token %}
+          <button type="submit">Выйти</button>
+        </form>
+      </nav>
+      <p>
+        Вы вошли как {{ user.username }}.
+        {% if user.is_staff %}(Администратор){% else %}(Приёмщик){% endif %}
+      </p>
+    </header>
+
+    <h1>Чисто.Тут</h1>
+
+    <h2>Главный экран</h2>
+    <p>Счётчики и горящие заказы будут здесь.</p>
+  </body>
+</html>
